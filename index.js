@@ -1,6 +1,6 @@
 const server = require("./api/server");
 
-const Port = process.env.Port || 7000;
+const Port = 7000;
 
 server.listen(Port, () => {
     console.log(`\n=== Server is listening on Port ${Port} ===\n`);

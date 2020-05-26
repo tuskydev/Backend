@@ -26,7 +26,7 @@ router.get("/", (req, res) => {
 
 router.post("/register", (req, res) => {
     const user = req.body;
-    const rounds = process.env.BCRYPT_ROUNDS || 8;
+    const rounds = 8;
 
     const hash = bcryptjs.hashSync(user.password, rounds)
     user.password = hash;
@@ -62,7 +62,7 @@ function createToken(user) {
         username: user.username,
     };
 
-    const secret = process.env.JWT_SECRET || "secretmysteryyouwillneverfind";
+    const secret = "secretmysteryyouwillneverfind";
 
     const options = {
         expiresIn: "1d"
