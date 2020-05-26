@@ -43,7 +43,7 @@ router.post("/register", (req, res) => {
 router.post("/login", (req, res) => {
     const {username, password} = req.body;
 
-    Users.findByUsers({username: username})
+    Users.findByUsers({username})
     .then(([response]) => {
         // Compare the password the hash stored in the databsae 
         if(response && bcryptjs.compareSync(password, response.password)) {
@@ -60,7 +60,6 @@ function createToken(user) {
     const payload = {
         sub: user.id,
         username: user.username,
-        password: user.password
     };
 
     const secret = process.env.JWT_SECRET || "secretmysteryyouwillneverfind";
